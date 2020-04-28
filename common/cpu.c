@@ -445,8 +445,11 @@ int x264_cpu_num_processors( void )
 #else
     cpu_set_t p_aff;
     memset( &p_aff, 0, sizeof(p_aff) );
-    if( sched_getaffinity( 0, sizeof(p_aff), &p_aff ) )
-        return 1;
+    return 1;
+    /*
+     *if( sched_getaffinity( 0, sizeof(p_aff), &p_aff ) )
+     *    return 1;
+     */
 #if HAVE_CPU_COUNT
     return CPU_COUNT(&p_aff);
 #else
